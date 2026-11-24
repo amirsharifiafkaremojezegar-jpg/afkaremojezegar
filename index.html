@@ -49,6 +49,27 @@ footer{background:#081326;color:#dbe2ed;padding:30px 0}.foot{display:flex;align-
 .article-source-note{margin-top:20px;padding:13px 16px;border-right:3px solid #d9b85e;background:#fff8e8;border-radius:10px;color:#6f6248;font-size:12px;line-height:1.9}
 .article-all-link{text-align:center;margin-top:20px}
 @media(max-width:760px){.article-categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.article-categories a{padding:13px}.article-categories a b{font-size:14px}.article-feature-grid{grid-template-columns:1fr}.article-feature{min-height:0}}
+
+.article-category{display:flex;flex-direction:column;gap:7px;text-align:right;padding:16px;border:1px solid #e4c879;border-radius:16px;background:#fff;color:#14264a;cursor:pointer;font:inherit}
+.article-category b{font-size:15px}.article-category span{font-size:12px;line-height:1.8;color:#68758a}
+.article-category.active{background:#142d50;color:#f4d98f;border-color:#d8b85e}.article-category.active span{color:#e5e8ef}
+.article-toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:20px 0}
+.article-toolbar input{width:min(100%,520px);padding:13px 16px;border:1px solid #d8c58e;border-radius:12px;background:#fff;font:inherit;direction:rtl}
+#article-count{font-size:12px;color:#66748a;white-space:nowrap}
+.article-status{padding:18px;text-align:center;border-radius:14px;background:#fff8e8;color:#756039;font-size:13px;line-height:1.9}
+.article-feature{cursor:pointer;text-align:right}
+.article-feature img{width:100%;height:155px;object-fit:cover;border-radius:12px;background:#f0eee8}
+.article-reader{margin-top:20px;padding:clamp(18px,4vw,36px);background:#fff;border:1px solid #e4d6b3;border-radius:20px;line-height:2.1;color:#27364b}
+.article-reader[hidden]{display:none}
+.article-reader h1{font-size:clamp(23px,4vw,34px);line-height:1.7;color:#152846}
+.article-reader .article-body{font-size:16px;line-height:2.2;overflow-wrap:anywhere}
+.article-reader .article-body img{max-width:100%;height:auto;border-radius:14px}
+.article-reader .article-body figure{margin:20px 0}
+.article-reader .article-body a{color:#9a742e}
+.article-reader .article-close{padding:10px 15px;border:1px solid #d8bd73;border-radius:10px;background:#fff7e4;color:#715522;font:inherit;cursor:pointer}
+.article-reader .article-hero{width:100%;max-height:420px;object-fit:contain;border-radius:14px;margin:12px 0}
+.article-reader .article-meta{font-size:12px;color:#8b7548;margin-bottom:15px}
+@media(max-width:760px){.article-toolbar{align-items:stretch;flex-direction:column}.article-toolbar input{width:auto}.article-feature img{height:180px}.article-reader .article-body{font-size:15px}}
 </style>
 </head>
 <body>
@@ -103,25 +124,21 @@ footer{background:#081326;color:#dbe2ed;padding:30px 0}.foot{display:flex;align-
 <div class="app-visual"><img src="https://parvaresheafkar.com/wp-content/themes/parvaresheafkar-gp/assets/img/app-account.webp" alt="نمای ناحیه کاربری اپلیکیشن پرورش افکار، دسترسی به دوره‌ها و پشتیبانی"><span>محیط کاربری اپلیکیشن پرورش افکار</span></div>
 </div></div></section>
 <section class="section articles-section" id="articles"><div class="container">
-<div class="heading"><div class="eyebrow">مجله و دانش‌نامه</div><h2>مقالات افکار معجزه‌گر</h2><p>آرشیوی برای مطالعه درباره رشد فردی، قانون جذب، موفقیت و زندگی افراد الهام‌بخش</p></div>
-<div class="article-categories">
-<a href="https://parvaresheafkar.com/success-way/" target="_blank" rel="noopener"><b>موفقیت و رشد فردی</b><span>عادت‌ها، ذهنیت، تمرکز و توسعه فردی</span></a>
-<a href="https://parvaresheafkar.com/law-attraction/" target="_blank" rel="noopener"><b>قانون جذب</b><span>باورها، توجه، تجسم و تمرین‌های ذهنی</span></a>
-<a href="https://parvaresheafkar.com/success-way/life/" target="_blank" rel="noopener"><b>موفقیت در زندگی</b><span>هدف‌گذاری، روابط و انتخاب‌های زندگی</span></a>
-<a href="https://parvaresheafkar.com/success-way/job/" target="_blank" rel="noopener"><b>موفقیت در کسب‌وکار</b><span>مهارت‌ها، کارآفرینی و پیشرفت شغلی</span></a>
-<a href="https://parvaresheafkar.com/biography/" target="_blank" rel="noopener"><b>بیوگرافی بزرگان</b><span>زندگی و مسیر افراد اثرگذار</span></a>
-<a href="https://parvaresheafkar.com/biography/actors/" target="_blank" rel="noopener"><b>بیوگرافی بازیگران</b><span>زندگی‌نامه چهره‌های سینما</span></a>
+<div class="heading"><div class="eyebrow">مجله و دانش‌نامه</div><h2>آرشیو مقالات افکار معجزه‌گر</h2><p>مقالات متنی سایت پرورش افکار؛ جست‌وجو، دسته‌بندی و مطالعه در همین صفحه</p></div>
+<div class="article-categories" id="article-categories">
+<button type="button" class="article-category active" data-category="all"><b>همه مقالات</b><span>نمایش تمام نوشته‌ها</span></button>
+<button type="button" class="article-category" data-category="success-way"><b>موفقیت و رشد فردی</b><span>ذهنیت، عادت‌ها و توسعه فردی</span></button>
+<button type="button" class="article-category" data-category="law-attraction"><b>قانون جذب</b><span>باورها و تمرین‌های ذهنی</span></button>
+<button type="button" class="article-category" data-category="life"><b>موفقیت در زندگی</b><span>هدف‌گذاری و روابط</span></button>
+<button type="button" class="article-category" data-category="job"><b>موفقیت در کسب‌وکار</b><span>کارآفرینی و پیشرفت شغلی</span></button>
+<button type="button" class="article-category" data-category="biography"><b>بیوگرافی بزرگان</b><span>زندگی افراد اثرگذار</span></button>
+<button type="button" class="article-category" data-category="actors"><b>بیوگرافی بازیگران</b><span>زندگی‌نامه چهره‌های سینما</span></button>
 </div>
-<div class="article-feature-grid">
-<a class="article-feature" href="https://parvaresheafkar.com/success-way/avoidant-attachment/" target="_blank" rel="noopener"><span>موفقیت و رشد فردی · ۱۱ دقیقه مطالعه</span><b>دلبستگی اجتنابی چیست؟ نشانه‌ها، ریشه و راه‌های مواجهه</b><p>آشنایی با الگوهای دلبستگی، نشانه‌ها و راهکارهای بهتر کردن رابطه‌ها.</p><em>مطالعه مقاله کامل ←</em></a>
-<a class="article-feature" href="https://parvaresheafkar.com/success-way/feminine-energy/" target="_blank" rel="noopener"><span>موفقیت و رشد فردی</span><b>انرژی زنانه چیست؟ نشانه‌ها و تعادل با انرژی مردانه</b><p>نگاهی به مفهوم انرژی زنانه، ویژگی‌ها و تمرین‌های مرتبط با آن.</p><em>مطالعه مقاله کامل ←</em></a>
-<a class="article-feature" href="https://parvaresheafkar.com/law-attraction/affirmations-to-the-universe/" target="_blank" rel="noopener"><span>قانون جذب</span><b>جملات تاکیدی به کائنات: ۴۰ جمله‌ی آماده در ۵ دسته</b><p>مجموعه‌ای از عبارت‌های تاکیدی برای تمرکز بر خواسته‌ها و اهداف.</p><em>مطالعه مقاله کامل ←</em></a>
-<a class="article-feature" href="https://parvaresheafkar.com/success-way/how-to-forget-ex/" target="_blank" rel="noopener"><span>موفقیت و رشد فردی</span><b>فراموش کردن عشق سابق: ۷ قدم عملی برای گذر از جدایی</b><p>قدم‌هایی برای عبور سالم‌تر از پایان رابطه و بازسازی زندگی شخصی.</p><em>مطالعه مقاله کامل ←</em></a>
-<a class="article-feature" href="https://parvaresheafkar.com/success-way/self-love-vs-narcissism/" target="_blank" rel="noopener"><span>موفقیت و رشد فردی</span><b>تفاوت خوددوستی و خودشیفتگی؛ نشانه‌ها و جدول مقایسه</b><p>شناخت تفاوت مراقبت سالم از خود با خودمحوری در روابط.</p><em>مطالعه مقاله کامل ←</em></a>
-<a class="article-feature" href="https://parvaresheafkar.com/law-attraction/is-law-of-attraction-real/" target="_blank" rel="noopener"><span>قانون جذب</span><b>قانون جذب چقدر واقعیت دارد؟ نگاهی صادقانه</b><p>مروری بر باور، توجه و نقش رفتار در رسیدن به هدف‌ها.</p><em>مطالعه مقاله کامل ←</em></a>
-</div>
-<div class="article-source-note">این فهرست، نقطه شروع آرشیو مقالات است. برای حفظ نسخه کامل و به‌روز نوشته‌ها، فعلاً مطالعه متن کامل از صفحه اصلی هر مقاله انجام می‌شود.</div>
-<div class="article-all-link"><a class="btn goldbtn" href="https://parvaresheafkar.com/blog/?type=text" target="_blank" rel="noopener">مشاهده آرشیو مقالات سایت پرورش افکار</a></div>
+<div class="article-toolbar"><input id="article-search" type="search" placeholder="جست‌وجو در عنوان و متن مقالات..." aria-label="جست‌وجو در مقالات"><span id="article-count" aria-live="polite">در حال دریافت فهرست مقالات...</span></div>
+<div id="article-status" class="article-status" role="status">در حال اتصال به آرشیو مقالات سایت پرورش افکار...</div>
+<div id="article-grid" class="article-feature-grid"></div>
+<div id="article-reader" class="article-reader" hidden><button type="button" id="article-close" class="article-close">← بازگشت به فهرست مقالات</button><div id="article-reader-content"></div></div>
+<div class="article-source-note">مقالات از آرشیو عمومی پرورش افکار بارگذاری می‌شوند. برای نمایش نسخه کامل هر نوشته، روی عنوان آن بزنید. نام نویسنده و منبع اصلی حفظ می‌شود.</div>
 </div></section>
 <section class="section" id="library"><div class="container"><div class="heading"><div class="eyebrow">گنجینه رایگان رشد و الهام</div><h2>کتابخانه رایگان افکار معجزه‌گر</h2><p>مجموعه‌ای از آموزش‌ها، تجربه‌های موفقیت، محتوای صوتی و تصویری و منابع الهام‌بخش</p></div><div class="contentgrid">
 <article class="contentcard"><img src="https://afkaremojezegar2.wordpress.com/wp-content/uploads/2026/11/afkar-education-badge.png" alt=""><h3>فایل‌های آموزشی رایگان</h3><p>محتوای آموزشی برای یادگیری و رشد فردی</p><a href="https://afkaremojezegar2.wordpress.com/free-video-lessons/">مشاهده آموزش‌ها ←</a></article>
@@ -150,5 +167,30 @@ footer{background:#081326;color:#dbe2ed;padding:30px 0}.foot{display:flex;align-
 </main>
 
 <footer><div class="container foot"><div><strong>افکار معجزه‌گر</strong><br><small>نماینده رسمی پرورش افکار امیرشریفی</small></div><a href="#home">بازگشت به بالای صفحه ↑</a><small>© تمامی حقوق برای افکار معجزه‌گر محفوظ است.</small></div></footer>
-<script>const btn=document.getElementById('navbtn'),nav=document.getElementById('navlinks');btn.addEventListener('click',()=>nav.classList.toggle('show'));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('show')));</script>
+<script>
+const btn=document.getElementById('navbtn'),nav=document.getElementById('navlinks');
+btn.addEventListener('click',()=>nav.classList.toggle('show'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('show')));
+(()=>{
+const API='https://parvaresheafkar.com/wp-json/wp/v2';
+const grid=document.getElementById('article-grid'),status=document.getElementById('article-status'),count=document.getElementById('article-count'),search=document.getElementById('article-search'),cats=document.getElementById('article-categories'),reader=document.getElementById('article-reader'),readerContent=document.getElementById('article-reader-content');
+let posts=[],categoryMap={},active='all';
+const plain=s=>{const d=document.createElement('div');d.innerHTML=s||'';return(d.textContent||d.innerText||'').replace(/\\s+/g,' ').trim()};
+const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const categoryFor=p=>{const names=(p.categories||[]).map(id=>(categoryMap[id]||'').toLowerCase());const slugs=names.join(' ');if(slugs.includes('جذب')||slugs.includes('attraction'))return'law-attraction';if(slugs.includes('زندگی')||slugs.includes('life'))return'life';if(slugs.includes('کسب')||slugs.includes('job')||slugs.includes('business'))return'job';if(slugs.includes('بازیگر')||slugs.includes('actor'))return'actors';if(slugs.includes('بیوگرافی')||slugs.includes('biography'))return'biography';return'success-way'};
+const imageFor=p=>{const m=p._embedded&&p._embedded['wp:featuredmedia']&&p._embedded['wp:featuredmedia'][0];return m&&(m.source_url||m.media_details?.sizes?.medium_large?.source_url)||''};
+function render(){const term=search.value.trim().toLowerCase();const filtered=posts.filter(p=>(active==='all'||categoryFor(p)===active)&&(!term||(plain(p.title.rendered)+' '+plain(p.excerpt.rendered)+' '+plain(p.content.rendered)).toLowerCase().includes(term)));count.textContent=filtered.length+' مقاله از '+posts.length+' مقاله';grid.innerHTML=filtered.map(p=>{const img=imageFor(p);return '<article class="article-feature" data-id="'+p.id+'" tabindex="0" role="button" aria-label="مطالعه '+esc(plain(p.title.rendered))+'">'+(img?'<img loading="lazy" src="'+esc(img)+'" alt="'+esc(plain(p.title.rendered))+'">':'')+'<span>'+esc((categoryMap[p.categories?.[0]]||'مقاله آموزشی'))+'</span><b>'+esc(plain(p.title.rendered))+'</b><p>'+esc(plain(p.excerpt.rendered).slice(0,190))+'</p><em>مطالعه مقاله ←</em></article>'}).join('');grid.hidden=filtered.length===0;if(!filtered.length)status.hidden=false;else status.hidden=true}
+function openPost(p){reader.hidden=false;grid.hidden=true;document.querySelector('.article-toolbar').hidden=true;cats.hidden=true;const img=imageFor(p);readerContent.innerHTML=(img?'<img class="article-hero" src="'+esc(img)+'" alt="'+esc(plain(p.title.rendered))+'">':'')+'<h1>'+esc(plain(p.title.rendered))+'</h1><div class="article-meta">منبع: پرورش افکار · '+esc(categoryMap[p.categories?.[0]]||'مقالات آموزشی')+'</div><div class="article-body">'+(p.content?.rendered||'<p>متن این مقاله در دسترس نیست.</p>')+'</div><p><a href="'+esc(p.link)+'" target="_blank" rel="noopener">مشاهده نسخه اصلی مقاله در پرورش افکار</a></p>';reader.scrollIntoView({behavior:'smooth',block:'start'})}
+document.getElementById('article-close').addEventListener('click',()=>{reader.hidden=true;grid.hidden=false;document.querySelector('.article-toolbar').hidden=false;cats.hidden=false;readerContent.innerHTML='';document.getElementById('articles').scrollIntoView({behavior:'smooth',block:'start'})});
+grid.addEventListener('click',e=>{const card=e.target.closest('[data-id]');if(card){const p=posts.find(x=>String(x.id)===card.dataset.id);if(p)openPost(p)}});
+grid.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const card=e.target.closest('[data-id]');if(card){e.preventDefault();const p=posts.find(x=>String(x.id)===card.dataset.id);if(p)openPost(p)}}});
+cats.addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(!b)return;active=b.dataset.category;cats.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));render()});
+search.addEventListener('input',render);
+async function load(){try{status.hidden=false;const cr=await fetch(API+'/categories?per_page=100');if(cr.ok){const cc=await cr.json();cc.forEach(c=>categoryMap[c.id]=c.name)}
+let page=1,total=1;do{const r=await fetch(API+'/posts?per_page=100&page='+page+'&_embed=1&orderby=date&order=desc');if(!r.ok)throw new Error('HTTP '+r.status);const batch=await r.json();if(!Array.isArray(batch))throw new Error('پاسخ آرشیو معتبر نیست');posts=posts.concat(batch);total=Number(r.headers.get('X-WP-TotalPages')||1);count.textContent='دریافت '+posts.length+' مقاله...';page++}while(page<=total&&page<=20);
+if(!posts.length)throw new Error('مقاله‌ای در آرشیو عمومی پیدا نشد');status.hidden=true;render()
+}catch(e){status.hidden=false;status.innerHTML='اتصال خودکار به آرشیو مقالات برقرار نشد. ممکن است دسترسی API یا اجازه بارگذاری بین‌دامنه‌ای از طرف سایت اصلی محدود باشد. برای جلوگیری از نمایش اطلاعات ناقص، مقاله ساختگی نشان داده نمی‌شود. <br><a href="https://parvaresheafkar.com/blog/?type=text" target="_blank" rel="noopener">باز کردن آرشیو اصلی مقالات</a>';count.textContent='آرشیو در انتظار اتصال';console.warn('Article archive:',e)}}
+load();
+})();
+</script>
 </body></html>
