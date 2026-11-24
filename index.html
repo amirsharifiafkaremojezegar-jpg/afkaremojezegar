@@ -84,6 +84,23 @@ footer{background:#081326;color:#dbe2ed;padding:30px 0}.foot{display:flex;align-
 #library .article-teaser-panel p{font-size:15px;line-height:2.1}
 @media(max-width:850px){#library .contentgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
 @media(max-width:560px){#library .contentgrid{grid-template-columns:1fr;gap:18px}#library .contentcard{padding:14px}#library .contentcard img{aspect-ratio:1/1}#library .contentcard h3{font-size:19px}#library .contentcard p{font-size:14px}#library .article-teaser-panel{min-height:270px;margin-bottom:28px;background-position:center center}}
+
+/* سربرگ آرشیو درست زیر عنوان کتابخانه */
+#library>.container>.heading{margin-bottom:24px}
+#library .article-teaser-panel{margin:0 0 30px}
+/* فایل‌های آموزشی با دو زیرشاخه بازشونده */
+#library .education-card{display:block;text-align:center;padding:0;overflow:hidden}
+#library .education-card summary{list-style:none;cursor:pointer;padding:20px 16px}
+#library .education-card summary::-webkit-details-marker{display:none}
+#library .education-card summary>img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:13px;margin:0 auto 12px}
+#library .education-toggle{display:inline-block;color:#98702b;font-size:13px;font-weight:900;margin-top:8px}
+#library .education-toggle b{margin-right:5px}
+#library .education-card[open] .education-toggle b{display:inline-block;transform:rotate(45deg)}
+#library .education-subsections{display:grid;gap:9px;padding:0 14px 15px}
+#library .education-subsections a{display:flex;flex-direction:column;gap:3px;text-align:right;background:#f7f3e9;border:1px solid #e8d7ad;border-radius:12px;padding:12px 14px;color:#17243a}
+#library .education-subsections a strong{font-size:14px;color:#17345c}
+#library .education-subsections a small{font-size:12px;color:#98702b;font-weight:700}
+@media(max-width:560px){#library .education-card summary{padding:14px}#library .education-subsections{padding:0 12px 13px}}
 </style>
 </head>
 <body>
@@ -137,15 +154,15 @@ footer{background:#081326;color:#dbe2ed;padding:30px 0}.foot{display:flex;align-
 </div>
 <div class="app-visual"><img src="https://parvaresheafkar.com/wp-content/themes/parvaresheafkar-gp/assets/img/app-account.webp" alt="نمای ناحیه کاربری اپلیکیشن پرورش افکار، دسترسی به دوره‌ها و پشتیبانی"><span>محیط کاربری اپلیکیشن پرورش افکار</span></div>
 </div></div></section>
-<section class="section" id="library"><div class="container"><div class="article-teaser-panel"><div><span>مجله و دانش‌نامه</span><h2>آرشیو مقالات افکار معجزه‌گر</h2><p>تمام مقالات آموزشی در موضوعات رشد فردی، قانون جذب، موفقیت و زندگی‌نامه‌ها؛ در یک صفحه اختصاصی همراه با جست‌وجو و دسته‌بندی.</p></div><a class="btn goldbtn" href="/articles.html">ورود به آرشیو مقالات <b>←</b></a></div><div class="heading"><div class="eyebrow">گنجینه رایگان رشد و الهام</div><h2>کتابخانه رایگان افکار معجزه‌گر</h2><p>مجموعه‌ای از آموزش‌ها، تجربه‌های موفقیت، محتوای صوتی و تصویری و منابع الهام‌بخش</p></div><div class="contentgrid">
-<article class="contentcard"><img src="https://afkaremojezegar2.wordpress.com/wp-content/uploads/2026/11/afkar-education-badge.png" alt=""><h3>فایل‌های آموزشی رایگان</h3><p>محتوای آموزشی برای یادگیری و رشد فردی</p><a href="https://afkaremojezegar2.wordpress.com/free-video-lessons/">مشاهده آموزش‌ها ←</a></article>
+<section class="section" id="library"><div class="container"><div class="heading"><div class="eyebrow">گنجینه رایگان رشد و الهام</div><h2>کتابخانه رایگان افکار معجزه‌گر</h2><p>مجموعه‌ای از آموزش‌ها، تجربه‌های موفقیت، محتوای صوتی و تصویری و منابع الهام‌بخش</p></div><div class="article-teaser-panel"><div><span>مجله و دانش‌نامه</span><h2>آرشیو مقالات افکار معجزه‌گر</h2><p>تمام مقالات آموزشی در موضوعات رشد فردی، قانون جذب، موفقیت و زندگی‌نامه‌ها؛ در یک صفحه اختصاصی همراه با جست‌وجو و دسته‌بندی.</p></div><a class="btn goldbtn" href="/articles.html">ورود به آرشیو مقالات <b>←</b></a></div><div class="contentgrid">
+<details class="contentcard education-card"><summary><img src="https://afkaremojezegar2.wordpress.com/wp-content/uploads/2026/11/afkar-education-badge.png" alt=""><h3>فایل‌های آموزشی رایگان</h3><p>مجموعه آموزش‌های رایگان تصویری و صوتی برای یادگیری و رشد فردی</p><span class="education-toggle">مشاهده دو بخش آموزشی <b>＋</b></span></summary><div class="education-subsections"><a href="https://afkaremojezegar2.wordpress.com/free-video-lessons/"><strong>آموزش‌های تصویری رایگان</strong><small>مشاهده ویدیوها و آموزش‌های دیداری ←</small></a><a href="https://afkaremojezegar2.wordpress.com/free-audio/"><strong>فایل‌های صوتی رایگان</strong><small>شنیدن و دریافت فایل‌های صوتی آموزشی ←</small></a></div></details>
 <article class="contentcard"><img src="https://afkaremojezegar2.wordpress.com/wp-content/uploads/2026/11/afkar-podcast-badge.png" alt=""><h3>پادکست‌های رایگان</h3><p>گفتارها و برنامه‌های صوتی آموزشی</p><a href="https://afkaremojezegar2.wordpress.com/free-podcasts/">شنیدن پادکست‌ها ←</a></article>
-<article class="contentcard"><img src="https://afkaremojezegar2.wordpress.com/wp-content/uploads/2026/11/afkar-video-lessons-badge.png" alt=""><h3>آموزش‌های تصویری رایگان</h3><p>ویدیوها و آموزش‌های دیداری</p><a href="https://afkaremojezegar2.wordpress.com/free-video-lessons/">دیدن آموزش‌ها ←</a></article>
+
 <article class="contentcard"><img src="https://afkaremojezegar2.wordpress.com/wp-content/uploads/2026/11/afkar-results-badge.png" alt=""><h3>نتایج شما</h3><p>روایت تجربه‌ها و موفقیت‌های اعضای افکار معجزه‌گر</p><a href="https://afkaremojezegar2.wordpress.com/natayej-shoma/">مشاهده نتایج و تجربه‌ها ←</a></article>
 <article class="contentcard"><img src="https://afkaremojezegar2.wordpress.com/wp-content/uploads/2026/11/afkar-positive-music-badge.png" alt=""><h3>آهنگ‌های مثبت</h3><p>آرشیو موسیقی‌های انگیزشی و مثبت</p><a href="https://afkaremojezegar2.wordpress.com/category/%d8%a2%d9%87%d9%86%da%af%d9%87%d8%a7%db%8c-%d9%85%d8%ab%d8%a8%d8%aa/">رفتن به آرشیو آهنگ‌ها ←</a></article>
 <article class="contentcard"><img src="https://afkaremojezegar2.wordpress.com/wp-content/uploads/2026/11/afkar-motivation-badge.png" alt=""><h3>فایل‌های انگیزشی</h3><p>منابع الهام‌بخش برای ادامه مسیر</p><a href="https://afkaremojezegar2.wordpress.com/category/%d9%81%d8%a7%db%8c%d9%84%d9%87%d8%a7%db%8c-%d8%a7%d9%86%da%af%db%8c%d8%b2%d8%b4%db%8c/">دیدن فایل‌ها ←</a></article>
 <article class="contentcard"><img src="https://afkaremojezegar2.wordpress.com/wp-content/uploads/2026/11/afkar-cinema-badge.png" alt=""><h3>فیلم‌ها و سریال‌های رشد و موفقیت</h3><p>معرفی آثار الهام‌بخش و آموزشی</p><a href="https://afkaremojezegar2.wordpress.com/category/%d9%85%d8%b9%d8%b1%d9%81%db%8c-%d9%81%db%8c%d9%84%d9%85%d9%87%d8%a7-%d9%88-%d8%b3%d8%b1%db%8c%d8%a7%d9%84%d9%87%d8%a7%db%8c-%d8%b1%d8%b4%d8%af-%d9%88-%d9%85%d9%88%d9%81%d9%82%db%8c/">مشاهده معرفی‌ها ←</a></article>
-<article class="contentcard"><img src="https://afkaremojezegar2.wordpress.com/wp-content/uploads/2026/11/afkar-audio-book-badge.png" alt=""><h3>آرشیو فایل‌های صوتی رایگان</h3><p>فایل‌های صوتی برای شنیدن و تمرین</p><a href="https://afkaremojezegar2.wordpress.com/free-audio/">مشاهده فایل‌های صوتی ←</a></article>
+
 </div></div></section>
 
 <section class="section dark" id="results"><div class="container"><div class="heading"><div class="eyebrow">تجربه و انگیزه</div><h2>نتایج و داستان‌های موفقیت</h2><p>آشنایی با تجربه‌ها و مسیر افرادی که برای تغییر و رشد تلاش کرده‌اند.</p></div><div class="featureband"><div class="feature"><b>نتایج شما</b><small>تجربه‌ها و دستاوردهای اعضای مجموعه</small></div><div class="feature"><b>داستان‌های موفقیت</b><small>زندگینامه و مسیر افراد موفق</small></div><div class="feature"><b>مجله رشد فردی</b><small>مطالب و محتوای تازه برای مطالعه</small></div></div><div style="text-align:center;margin-top:22px"><a class="btn goldbtn" href="https://afkaremojezegar2.wordpress.com/natayej-shoma/">مشاهده نتایج و تجربه‌ها</a></div></div></section>
