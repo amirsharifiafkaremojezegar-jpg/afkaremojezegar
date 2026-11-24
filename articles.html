@@ -44,7 +44,7 @@ async function openPost(p){reader.hidden=false;grid.hidden=true;cats.hidden=true
 grid.addEventListener('click',e=>{const c=e.target.closest('[data-id]');if(c){const p=posts.find(x=>String(x.id)===c.dataset.id);if(p)openPost(p)}});grid.addEventListener('keydown',e=>{if(e.key==='Enter'){const c=e.target.closest('[data-id]');if(c){const p=posts.find(x=>String(x.id)===c.dataset.id);if(p)openPost(p)}}});
 document.getElementById('back').addEventListener('click',()=>{reader.hidden=true;grid.hidden=false;cats.hidden=false;document.querySelector('.tools').hidden=false;render();document.getElementById('cats').scrollIntoView({behavior:'smooth'})});
 cats.addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;active=b.dataset.cat;cats.querySelectorAll('.cat').forEach(x=>x.classList.toggle('active',x===b));render()});q.addEventListener('input',render);more.addEventListener('click',loadNext);
-async function init(){try{const c=await fetch(API+'/categories?per_page=100');if(c.ok)(await c.json()).forEach(x=>categoryNames[x.id]=x.name);await loadNext();if(!allLoaded&&posts.length)loadNext()}catch(e){status.hidden=false;status.textContent='اتصال به آرشیو برقرار نشد. لطفاً بعداً دوباره تلاش کنید یا آرشیو اصلی را ببینید.'}}
+async function init(){try{const c=await fetch(API+'/categories?per_page=100');if(c.ok)(await c.json()).forEach(x=>categoryNames[x.id]=x.name);while(!allLoaded) await loadNext()}catch(e){status.hidden=false;status.textContent='اتصال به آرشیو برقرار نشد. لطفاً بعداً دوباره تلاش کنید یا آرشیو اصلی را ببینید.'}}
 init();
 })();
 </script></body></html>
