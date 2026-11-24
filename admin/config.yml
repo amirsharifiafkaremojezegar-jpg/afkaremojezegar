@@ -1,0 +1,105 @@
+backend:
+  name: github
+  repo: amirsharifiafkaremojezegar-jpg/afkaremojezegar
+  branch: main
+  # GitHub requires a secure OAuth service. Do not put a client secret or access token here.
+  # Authentication provider settings will be added after the OAuth host is configured.
+
+locale: fa
+site_url: https://amirsharifiafkaremojezegar-jpg.github.io/afkaremojezegar
+display_url: https://amirsharifiafkaremojezegar-jpg.github.io/afkaremojezegar
+media_folder: uploads
+public_folder: /uploads
+
+slug:
+  encoding: unicode
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: audio
+    label: فایل‌های صوتی
+    folder: content/audio
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: عنوان, name: title, widget: string }
+      - { label: توضیح کوتاه, name: description, widget: text, required: false }
+      - { label: فایل صوتی, name: audio_file, widget: file }
+      - { label: تصویر کاور, name: cover, widget: image, required: false }
+      - { label: تاریخ انتشار, name: date, widget: datetime }
+      - { label: انتشار, name: published, widget: boolean, default: true }
+  - name: podcasts
+    label: پادکست‌ها
+    folder: content/podcasts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: عنوان, name: title, widget: string }
+      - { label: توضیح, name: description, widget: text, required: false }
+      - { label: فایل یا نشانی صوتی, name: audio_file, widget: file, required: false }
+      - { label: تصویر کاور, name: cover, widget: image, required: false }
+      - { label: تاریخ انتشار, name: date, widget: datetime }
+      - { label: انتشار, name: published, widget: boolean, default: true }
+  - name: videos
+    label: آموزش‌های ویدیویی
+    folder: content/videos
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: عنوان, name: title, widget: string }
+      - { label: توضیح, name: description, widget: text, required: false }
+      - { label: نشانی ویدیو, name: video_url, widget: string }
+      - { label: تصویر کاور, name: cover, widget: image, required: false }
+      - { label: تاریخ انتشار, name: date, widget: datetime }
+      - { label: انتشار, name: published, widget: boolean, default: true }
+  - name: articles
+    label: مقالات و مطالب آموزشی
+    folder: content/articles
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: عنوان, name: title, widget: string }
+      - { label: خلاصه, name: description, widget: text, required: false }
+      - { label: متن مطلب, name: body, widget: markdown }
+      - { label: تصویر شاخص, name: cover, widget: image, required: false }
+      - { label: تاریخ انتشار, name: date, widget: datetime }
+      - { label: انتشار, name: published, widget: boolean, default: true }
+  - name: success_stories
+    label: داستان‌های موفقیت
+    folder: content/success-stories
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: عنوان, name: title, widget: string }
+      - { label: نام شخص یا عنوان روایت, name: person, widget: string, required: false }
+      - { label: خلاصه, name: description, widget: text, required: false }
+      - { label: متن داستان, name: body, widget: markdown }
+      - { label: تصویر, name: cover, widget: image, required: false }
+      - { label: تاریخ انتشار, name: date, widget: datetime }
+      - { label: انتشار, name: published, widget: boolean, default: true }
+  - name: biographies
+    label: زندگینامه افراد موفق
+    folder: content/biographies
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: نام, name: title, widget: string }
+      - { label: خلاصه زندگی, name: description, widget: text, required: false }
+      - { label: متن زندگینامه, name: body, widget: markdown }
+      - { label: تصویر, name: cover, widget: image, required: false }
+      - { label: تاریخ انتشار, name: date, widget: datetime }
+      - { label: انتشار, name: published, widget: boolean, default: true }
+  - name: courses
+    label: دوره‌ها و آموزش‌ها
+    folder: content/courses
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: عنوان دوره, name: title, widget: string }
+      - { label: توضیح, name: description, widget: text, required: false }
+      - { label: نوع دوره, name: course_type, widget: select, options: ["رایگان", "غیررایگان"] }
+      - { label: تصویر کاور, name: cover, widget: image, required: false }
+      - { label: نشانی ثبت‌نام یا مشاهده, name: link, widget: string, required: false }
+      - { label: تاریخ انتشار, name: date, widget: datetime }
+      - { label: انتشار, name: published, widget: boolean, default: true }
