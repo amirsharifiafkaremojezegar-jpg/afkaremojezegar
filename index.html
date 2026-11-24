@@ -117,6 +117,24 @@ footer{background:#081326;color:#dbe2ed;padding:30px 0}.foot{display:flex;align-
 #library .education-subsections a strong{font-size:14px;color:#17345c}
 #library .education-subsections a small{font-size:12px;color:#98702b;font-weight:700}
 @media(max-width:560px){#library .education-card summary{padding:14px}#library .education-subsections{padding:0 12px 13px}}
+
+/* تقویت ظاهر کارت فایل‌های آموزشی و بزرگ‌تر شدن نشان آن */
+#library .education-card{max-width:760px;width:100%;margin:0 auto;justify-self:center;border:1px solid #d9bd78;background:linear-gradient(145deg,#fff 0%,#fbf7ec 100%);box-shadow:0 18px 38px rgba(19,39,67,.13)}
+#library .education-card summary{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;padding:26px 24px 22px;background:radial-gradient(circle at 50% 5%,rgba(232,202,131,.18),transparent 48%)}
+#library .education-card summary>img{display:block;width:min(100%,260px);max-width:260px;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:20px;margin:0 auto 18px;border:1px solid #e3c879;box-shadow:0 10px 24px rgba(13,34,62,.16)}
+#library .education-card summary h3{font-size:clamp(21px,3vw,25px);line-height:1.7;margin:0 0 7px;color:#142744}
+#library .education-card summary p{font-size:15px;line-height:2;margin:0;color:#667184}
+#library .education-card summary .education-toggle{font-size:14px;margin-top:12px;padding:9px 18px;border-radius:999px;background:linear-gradient(110deg,#f8e3a5,#d7ad4e);color:#172744}
+#library .education-subsections{padding:0 24px 24px;gap:12px}
+#library .education-subsections a{background:linear-gradient(135deg,#142744,#1d4775);border:1px solid #d7b85f;border-radius:14px;padding:16px;color:#fff;box-shadow:0 8px 18px rgba(13,34,62,.12)}
+#library .education-subsections a strong{color:#f4d98f;font-size:15px}
+#library .education-subsections a small{color:#e0e8f1;font-size:12px}
+@media(max-width:560px){
+#library .education-card{max-width:100%}
+#library .education-card summary{padding:20px 16px}
+#library .education-card summary>img{width:min(100%,230px);max-width:230px}
+#library .education-subsections{grid-template-columns:1fr;padding:0 14px 16px}
+}
 </style>
 </head>
 <body>
