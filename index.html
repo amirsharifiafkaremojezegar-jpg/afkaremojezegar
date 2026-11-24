@@ -175,7 +175,7 @@ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classLis
 const API='https://parvaresheafkar.com/wp-json/wp/v2';
 const grid=document.getElementById('article-grid'),status=document.getElementById('article-status'),count=document.getElementById('article-count'),search=document.getElementById('article-search'),cats=document.getElementById('article-categories'),reader=document.getElementById('article-reader'),readerContent=document.getElementById('article-reader-content');
 let posts=[],categoryMap={},active='all';
-const plain=s=>{const d=document.createElement('div');d.innerHTML=s||'';return(d.textContent||d.innerText||'').replace(/\\s+/g,' ').trim()};
+const plain=s=>{const d=document.createElement('div');d.innerHTML=s||'';return(d.textContent||d.innerText||'').replace(/\s+/g,' ').trim()};
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categoryFor=p=>{const names=(p.categories||[]).map(id=>(categoryMap[id]||'').toLowerCase());const slugs=names.join(' ');if(slugs.includes('جذب')||slugs.includes('attraction'))return'law-attraction';if(slugs.includes('زندگی')||slugs.includes('life'))return'life';if(slugs.includes('کسب')||slugs.includes('job')||slugs.includes('business'))return'job';if(slugs.includes('بازیگر')||slugs.includes('actor'))return'actors';if(slugs.includes('بیوگرافی')||slugs.includes('biography'))return'biography';return'success-way'};
 const imageFor=p=>{const m=p._embedded&&p._embedded['wp:featuredmedia']&&p._embedded['wp:featuredmedia'][0];return m&&(m.source_url||m.media_details?.sizes?.medium_large?.source_url)||''};
