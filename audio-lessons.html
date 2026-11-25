@@ -40,7 +40,7 @@ footer{text-align:center;color:#8290a3;font-size:11px;padding:20px}
   if(!filtered.length){list.innerHTML='<div class="empty">هنوز فایل صوتی منتشرشده‌ای در این بخش قرار نگرفته است.</div>';return;}
   list.innerHTML=filtered.map((x,i)=>{
    const url=/^https?:\/\//i.test(x.storage_path) ? x.storage_path : client.storage.from('audio-lessons').getPublicUrl(x.storage_path).data.publicUrl;
-   return '<article class="item"><h2>'+escapeHtml(x.title)+'</h2>'+(x.description?'<p>'+escapeHtml(x.description)+'</p>':'')+'<p class="welcome-note">با شروع این آموزش، پیام خوشامدگویی کوتاهی پخش می‌شود.</p><audio class="lesson-audio" controls preload="none" data-lesson="'+i+'" src="'+url.replace(/"/g,'&quot;')+'">مرورگر شما از پخش صوت پشتیبانی نمی‌کند.</audio></article>';
+   return '<article class="item"><h2>'+escapeHtml(x.title)+'</h2>'+(x.description?'<p>'+escapeHtml(x.description)+'</p>':'')+'<p class="welcome-note">با شروع این آموزش، پیام خوشامدگویی کوتاهی پخش می‌شود.</p><audio class="lesson-audio" controls controlslist="nodownload" preload="none" data-lesson="'+i+'" src="'+url.replace(/"/g,'&quot;')+'">مرورگر شما از پخش صوت پشتیبانی نمی‌کند.</audio></article>';
   }).join('');
   const welcomeUrl='https://share.deepstorage.dev/b237ae0e7d86973e974a074df1c2c481/bd7c0a24-3462-4c10-9466-11cc33701011.mp3';
   const welcomeAudio=new Audio(welcomeUrl);
