@@ -149,7 +149,7 @@ footer{background:#081326;color:#dbe2ed;padding:30px 0}.foot{display:flex;align-
 
 <h2 style="color:#101d38;font-size:clamp(22px,3vw,30px);margin:8px 0">داستان معجزه قانون جذب در خانه</h2>
 <p style="font-size:15px;color:#4d5b70;line-height:2">قانون جذب واقعا به معنای واقعی معجزه زندگی من بود، من نتایج بزرگی از قانون جذب دیدم و زندگیمو از این رو به اون رو کردم، بعد تصمیم گرفتم بیام مسیری که رفتم رو به دیگران هم یاد بدم</p>
-<p><a class="btn goldbtn" href="https://parvaresheafkar.com/" target="_blank" rel="noopener">داستان کامل معجزه قانون جذب در زندگی من رو اینجا بخونید</a></p>
+<p>داستان کامل معجزه قانون جذب در زندگی من رو اینجا بخونید</p>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px">
 <div style="background:#f7f6f2;border-radius:13px;padding:14px"><b style="color:#101d38">01</b><h3 style="font-size:15px;margin:4px 0;color:#101d38">از لکنت زبان و خجولی شدید</h3><p style="font-size:13px;margin:0;color:#68758a">تا سخنرانی برابر صدها نفر</p></div>
 <div style="background:#f7f6f2;border-radius:13px;padding:14px"><b style="color:#101d38">02</b><h3 style="font-size:15px;margin:4px 0;color:#101d38">از شرایط سخت ابتدای خدمت سربازی</h3><p style="font-size:13px;margin:0;color:#68758a">تا شرایط فوق العاده راحت پایان خدمت در حد یک سرهنگ تمام!</p></div>
@@ -180,11 +180,11 @@ footer{background:#081326;color:#dbe2ed;padding:30px 0}.foot{display:flex;align-
 <p>با دانلود اپلیکیشن پرورش افکار به دوره‌های رایگان، دوره‌های پولی، تمرین‌ها و همچنین پشتیبانی دوره‌ها دسترسی داشته باشید.</p>
 <p class="app-note">با نصب اپلیکیشن می‌توانید آموزش‌های خود را دنبال کنید، به تمرین‌ها دسترسی داشته باشید و برای پیگیری دوره‌ها از بخش پشتیبانی استفاده کنید.</p>
 <div class="app-links">
-<a class="btn goldbtn" href="https://parvareshapp.com/download/android-application" target="_blank" rel="noopener">دانلود نسخه اندروید</a>
-<a class="btn ghostbtn" href="https://web.parvareshapp.com/?src=popup" target="_blank" rel="noopener">نسخه آیفون (iOS)</a>
+<a class="btn goldbtn" href="https://parvareshapp.com/download/application/73QfE" target="_blank" rel="noopener">دانلود نسخه اندروید</a>
+<a class="btn ghostbtn" href="https://parvareshapp.com/register/73QfE" target="_blank" rel="noopener">نسخه آیفون (iOS)</a>
 <a class="btn ghostbtn" href="https://parvareshapp.com/register/73QfE" target="_blank" rel="noopener">ثبت‌نام و ورود به دوره‌ها</a>
 </div>
-<div class="app-extra-links"><a href="https://iapps.ir/app/پرورش-افکار/871347634" target="_blank" rel="noopener">دریافت نسخه iOS از آی‌اپس</a><span>•</span><a href="https://parvareshapp.com/download/application/73QfE" target="_blank" rel="noopener">لینک اپلیکیشن معرفی‌شده</a></div>
+<div class="app-extra-links"><a href="https://parvareshapp.com/register/73QfE" target="_blank" rel="noopener">دریافت نسخه iOS از آی‌اپس</a><span>•</span><a href="https://parvareshapp.com/download/application/73QfE" target="_blank" rel="noopener">لینک اپلیکیشن معرفی‌شده</a></div>
 </div>
 <div class="app-visual"><img src="https://parvaresheafkar.com/wp-content/themes/parvaresheafkar-gp/assets/img/app-account.webp" alt="نمای ناحیه کاربری اپلیکیشن پرورش افکار، دسترسی به دوره‌ها و پشتیبانی"><span>محیط کاربری اپلیکیشن پرورش افکار</span></div>
 </div></div></section>
@@ -238,7 +238,7 @@ search.addEventListener('input',render);
 async function load(){try{status.hidden=false;const cr=await fetch(API+'/categories?per_page=100');if(cr.ok){const cc=await cr.json();cc.forEach(c=>categoryMap[c.id]=c.name)}
 let page=1,total=1;do{const r=await fetch(API+'/posts?per_page=100&page='+page+'&_embed=1&orderby=date&order=desc');if(!r.ok)throw new Error('HTTP '+r.status);const batch=await r.json();if(!Array.isArray(batch))throw new Error('پاسخ آرشیو معتبر نیست');posts=posts.concat(batch);total=Number(r.headers.get('X-WP-TotalPages')||1);count.textContent='دریافت '+posts.length+' مقاله...';page++}while(page<=total&&page<=20);
 if(!posts.length)throw new Error('مقاله‌ای در آرشیو عمومی پیدا نشد');status.hidden=true;render()
-}catch(e){status.hidden=false;status.innerHTML='اتصال خودکار به آرشیو مقالات برقرار نشد. ممکن است دسترسی API یا اجازه بارگذاری بین‌دامنه‌ای از طرف سایت اصلی محدود باشد. برای جلوگیری از نمایش اطلاعات ناقص، مقاله ساختگی نشان داده نمی‌شود. <br><a href="https://parvaresheafkar.com/blog/?type=text" target="_blank" rel="noopener">باز کردن آرشیو اصلی مقالات</a>';count.textContent='آرشیو در انتظار اتصال';console.warn('Article archive:',e)}}
+}catch(e){status.hidden=false;status.innerHTML='اتصال خودکار به آرشیو مقالات برقرار نشد. ممکن است دسترسی API یا اجازه بارگذاری بین‌دامنه‌ای از طرف سایت اصلی محدود باشد. برای جلوگیری از نمایش اطلاعات ناقص، مقاله ساختگی نشان داده نمی‌شود. <br>باز کردن آرشیو اصلی مقالات';count.textContent='آرشیو در انتظار اتصال';console.warn('Article archive:',e)}}
 load();
 })();
 </script>
