@@ -39,7 +39,7 @@ footer{text-align:center;color:#8290a3;font-size:11px;padding:20px}
   count.textContent=filtered.length+' فایل';
   if(!filtered.length){list.innerHTML='<div class="empty">هنوز فایل صوتی منتشرشده‌ای در این بخش قرار نگرفته است.</div>';return;}
   list.innerHTML=filtered.map(x=>{
-   const url=client.storage.from('audio-lessons').getPublicUrl(x.storage_path).data.publicUrl;
+   const url=/^https?:\/\//i.test(x.storage_path) ? x.storage_path : client.storage.from('audio-lessons').getPublicUrl(x.storage_path).data.publicUrl;
    return '<article class="item"><h2>'+escapeHtml(x.title)+'</h2>'+(x.description?'<p>'+escapeHtml(x.description)+'</p>':'')+'<audio controls preload="none" src="'+url.replace(/"/g,'&quot;')+'">مرورگر شما از پخش صوت پشتیبانی نمی‌کند.</audio></article>';
   }).join('');
  }
