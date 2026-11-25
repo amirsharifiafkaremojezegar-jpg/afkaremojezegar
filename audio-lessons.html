@@ -64,7 +64,7 @@ footer{text-align:center;color:#9eabc0;font-size:11px;padding:22px;border-top:1p
  function fileUrl(x){return /^https?:\/\//i.test(x.storage_path)?x.storage_path:client.storage.from('audio-lessons').getPublicUrl(x.storage_path).data.publicUrl;}
  function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
  async function playLesson(x){
-  const token=++playToken;activeUrl=fileUrl(x);player.pause();welcome.pause();welcome.currentTime=0;player.removeAttribute('src');player.load();
+  const token=++playToken;activeUrl=fileUrl(x);welcomePhase=false;player.pause();welcome.pause();welcome.currentTime=0;player.removeAttribute('src');player.load();
   playerTitle.textContent=x.title;hint.textContent='در حال پخش پیام خوشامدگویی…';
   try{welcomePhase=true;await welcome.play();}catch(e){welcomePhase=false;hint.textContent='خوشامدگویی در دسترس نبود؛ آموزش در حال شروع است.';startMain(token);return;}
   welcome.onended=()=>{if(token!==playToken)return;welcomePhase=false;hint.textContent='اکنون در حال پخش آموزش';startMain(token);};
