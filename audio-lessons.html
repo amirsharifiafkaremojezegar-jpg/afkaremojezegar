@@ -15,7 +15,7 @@ main{padding:32px 0 60px}.toolbar{display:flex;gap:12px;align-items:center;justi
 #search{font:inherit;padding:11px 14px;border:1px solid #dfd2ad;border-radius:12px;background:#fff;min-width:min(100%,280px);flex:1}
 #count{font-size:12px;color:var(--muted)}.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
 .item{background:#fff;border:1px solid #e6d7ae;border-radius:18px;padding:18px;box-shadow:0 8px 22px #101d3810}
-.item h2{font-size:18px;color:var(--navy);margin:0 0 5px}.item p{font-size:13px;color:var(--muted);margin:0 0 12px}
+.item h2{font-size:18px;color:var(--navy);margin:0 0 5px}.item p{font-size:13px;color:var(--muted);margin:0 0 12px}.item .welcome-note{font-size:12px;color:#80652e;margin:8px 0 4px}
 audio{width:100%;height:42px}.empty,.status{background:#fff8e8;border:1px solid #e7d39b;border-radius:14px;padding:18px;text-align:center;color:#765d2a;font-size:13px;grid-column:1/-1}
 footer{text-align:center;color:#8290a3;font-size:11px;padding:20px}
 @media(max-width:620px){.list{grid-template-columns:1fr}.toolbar{align-items:stretch;flex-direction:column}#search{width:100%}}
@@ -38,10 +38,26 @@ footer{text-align:center;color:#8290a3;font-size:11px;padding:20px}
   const filtered=rows.filter(x=>(x.title+' '+(x.description||'')).toLocaleLowerCase('fa').includes(q));
   count.textContent=filtered.length+' فایل';
   if(!filtered.length){list.innerHTML='<div class="empty">هنوز فایل صوتی منتشرشده‌ای در این بخش قرار نگرفته است.</div>';return;}
-  list.innerHTML=filtered.map(x=>{
+  list.innerHTML=filtered.map((x,i)=>{
    const url=/^https?:\/\//i.test(x.storage_path) ? x.storage_path : client.storage.from('audio-lessons').getPublicUrl(x.storage_path).data.publicUrl;
-   return '<article class="item"><h2>'+escapeHtml(x.title)+'</h2>'+(x.description?'<p>'+escapeHtml(x.description)+'</p>':'')+'<audio controls preload="none" src="'+url.replace(/"/g,'&quot;')+'">مرورگر شما از پخش صوت پشتیبانی نمی‌کند.</audio></article>';
+   return '<article class="item"><h2>'+escapeHtml(x.title)+'</h2>'+(x.description?'<p>'+escapeHtml(x.description)+'</p>':'')+'<p class="welcome-note">با شروع این آموزش، پیام خوشامدگویی کوتاهی پخش می‌شود.</p><audio class="lesson-audio" controls preload="none" data-lesson="'+i+'" src="'+url.replace(/"/g,'&quot;')+'">مرورگر شما از پخش صوت پشتیبانی نمی‌کند.</audio></article>';
   }).join('');
+  const welcomeUrl='https://share.deepstorage.dev/b237ae0e7d86973e974a074df1c2c481/bd7c0a24-3462-4c10-9466-11cc33701011.mp3';
+  const welcomeAudio=new Audio(welcomeUrl);
+  list.querySelectorAll('.lesson-audio').forEach(audio=>{
+   audio.addEventListener('play',async function firstPlay(){
+    if(this.dataset.welcomed==='yes') return;
+    this.pause();
+    this.dataset.welcomed='yes';
+    try {
+     welcomeAudio.currentTime=0;
+     await welcomeAudio.play();
+     welcomeAudio.onended=()=>this.play().catch(()=>{});
+    } catch(e) {
+     this.play().catch(()=>{});
+    }
+   });
+  });
  }
  function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
  async function load(){
