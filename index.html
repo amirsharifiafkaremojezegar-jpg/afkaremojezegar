@@ -221,7 +221,7 @@ const btn=document.getElementById('navbtn'),nav=document.getElementById('navlink
 btn.addEventListener('click',()=>nav.classList.toggle('show'));
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('show')));
 (()=>{
-const API='https://parvaresheafkar.com/wp-json/wp/v2';
+const API='';
 const grid=document.getElementById('article-grid'),status=document.getElementById('article-status'),count=document.getElementById('article-count'),search=document.getElementById('article-search'),cats=document.getElementById('article-categories'),reader=document.getElementById('article-reader'),readerContent=document.getElementById('article-reader-content');
 let posts=[],categoryMap={},active='all';
 const plain=s=>{const d=document.createElement('div');d.innerHTML=s||'';return(d.textContent||d.innerText||'').replace(/\s+/g,' ').trim()};
@@ -238,7 +238,7 @@ search.addEventListener('input',render);
 async function load(){try{status.hidden=false;const cr=await fetch(API+'/categories?per_page=100');if(cr.ok){const cc=await cr.json();cc.forEach(c=>categoryMap[c.id]=c.name)}
 let page=1,total=1;do{const r=await fetch(API+'/posts?per_page=100&page='+page+'&_embed=1&orderby=date&order=desc');if(!r.ok)throw new Error('HTTP '+r.status);const batch=await r.json();if(!Array.isArray(batch))throw new Error('پاسخ آرشیو معتبر نیست');posts=posts.concat(batch);total=Number(r.headers.get('X-WP-TotalPages')||1);count.textContent='دریافت '+posts.length+' مقاله...';page++}while(page<=total&&page<=20);
 if(!posts.length)throw new Error('مقاله‌ای در آرشیو عمومی پیدا نشد');status.hidden=true;render()
-}catch(e){status.hidden=false;status.innerHTML='اتصال خودکار به آرشیو مقالات برقرار نشد. ممکن است دسترسی API یا اجازه بارگذاری بین‌دامنه‌ای از طرف سایت اصلی محدود باشد. برای جلوگیری از نمایش اطلاعات ناقص، مقاله ساختگی نشان داده نمی‌شود. <br>باز کردن آرشیو اصلی مقالات';count.textContent='آرشیو در انتظار اتصال';console.warn('Article archive:',e)}}
+}catch(e){status.hidden=false;status.innerHTML='آرشیو مقالات در حال حاضر به منبع داده متصل نیست. برای جلوگیری از نمایش اطلاعات ناقص، مقاله ساختگی نشان داده نمی‌شود.';count.textContent='آرشیو در انتظار اتصال';console.warn('Article archive:',e)}}
 load();
 })();
 </script>
