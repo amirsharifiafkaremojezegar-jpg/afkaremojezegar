@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101d38">
+<title>فایل‌های صوتی رایگان | افکار معجزه‌گر</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#101d38;--navy2:#173b67;--gold:#d8b56d;--gold2:#f3dc9a;--paper:#f7f6f2;--muted:#68758a}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:#17243a;font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.9}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:28px 16px;border-bottom:2px solid var(--gold)}
+.wrap{width:min(960px,calc(100% - 30px));margin:auto}.back{color:var(--gold2);text-decoration:none;font-size:13px}
+h1{font-size:clamp(25px,4vw,38px);margin:12px 0 4px}.intro{color:#dce5f2;margin:0;font-size:14px}
+main{padding:32px 0 60px}.toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap}
+#search{font:inherit;padding:11px 14px;border:1px solid #dfd2ad;border-radius:12px;background:#fff;min-width:min(100%,280px);flex:1}
+#count{font-size:12px;color:var(--muted)}.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.item{background:#fff;border:1px solid #e6d7ae;border-radius:18px;padding:18px;box-shadow:0 8px 22px #101d3810}
+.item h2{font-size:18px;color:var(--navy);margin:0 0 5px}.item p{font-size:13px;color:var(--muted);margin:0 0 12px}
+audio{width:100%;height:42px}.empty,.status{background:#fff8e8;border:1px solid #e7d39b;border-radius:14px;padding:18px;text-align:center;color:#765d2a;font-size:13px;grid-column:1/-1}
+footer{text-align:center;color:#8290a3;font-size:11px;padding:20px}
+@media(max-width:620px){.list{grid-template-columns:1fr}.toolbar{align-items:stretch;flex-direction:column}#search{width:100%}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="back" href="/">← بازگشت به افکار معجزه‌گر</a><h1>فایل‌های صوتی رایگان</h1><p class="intro">آموزش‌های صوتی برای رشد فردی و پرورش افکار؛ به‌زودی فایل‌های تازه نیز اضافه می‌شوند.</p></div></header>
+<main class="wrap"><div class="toolbar"><input id="search" type="search" placeholder="جست‌وجو در فایل‌های صوتی…" aria-label="جست‌وجو"><span id="count">در حال دریافت فهرست…</span></div><section id="list" class="list"><div class="status">در حال بارگذاری فایل‌ها…</div></section></main>
+<footer>افکار معجزه‌گر · کتابخانه رایگان رشد و الهام</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0"></script>
+<script>
+(function(){
+ const SUPABASE_URL="https://hrkumriixxhzklbhebbs.supabase.co";
+ const SUPABASE_KEY="sb_publishable_KeX22HmbAs8L75bCopZvQQ_X_jVpSVI";
+ const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+ const list=document.getElementById('list'), search=document.getElementById('search'), count=document.getElementById('count');
+ let rows=[];
+ function render(){
+  const q=search.value.trim().toLocaleLowerCase('fa');
+  const filtered=rows.filter(x=>(x.title+' '+(x.description||'')).toLocaleLowerCase('fa').includes(q));
+  count.textContent=filtered.length+' فایل';
+  if(!filtered.length){list.innerHTML='<div class="empty">هنوز فایل صوتی منتشرشده‌ای در این بخش قرار نگرفته است.</div>';return;}
+  list.innerHTML=filtered.map(x=>{
+   const url=client.storage.from('audio-lessons').getPublicUrl(x.storage_path).data.publicUrl;
+   return '<article class="item"><h2>'+escapeHtml(x.title)+'</h2>'+(x.description?'<p>'+escapeHtml(x.description)+'</p>':'')+'<audio controls preload="none" src="'+url.replace(/"/g,'&quot;')+'">مرورگر شما از پخش صوت پشتیبانی نمی‌کند.</audio></article>';
+  }).join('');
+ }
+ function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+ async function load(){
+  const {data,error}=await client.from('audio_lessons').select('title,description,storage_path,sort_order,created_at').eq('is_published',true).order('sort_order',{ascending:true}).order('created_at',{ascending:false});
+  if(error){list.innerHTML='<div class="empty">دریافت فایل‌ها با خطا روبه‌رو شد. لطفاً کمی بعد دوباره تلاش کنید.</div>';count.textContent='خطا در دریافت';console.error(error);return;}
+  rows=data||[];render();
+ }
+ search.addEventListener('input',render);load();
+})();
+</script>
+</body></html>
