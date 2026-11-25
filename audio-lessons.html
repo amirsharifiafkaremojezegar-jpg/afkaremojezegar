@@ -2,64 +2,85 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101d38">
-<title>فایل‌های صوتی رایگان | افکار معجزه‌گر</title>
+<meta name="theme-color" content="#0b1730">
+<title>کتابخانه صوتی رایگان | افکار معجزه‌گر</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#101d38;--navy2:#173b67;--gold:#d8b56d;--gold2:#f3dc9a;--paper:#f7f6f2;--muted:#68758a}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:#17243a;font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.9}
-header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:28px 16px;border-bottom:2px solid var(--gold)}
-.wrap{width:min(960px,calc(100% - 30px));margin:auto}.back{color:var(--gold2);text-decoration:none;font-size:13px}
-h1{font-size:clamp(25px,4vw,38px);margin:12px 0 4px}.intro{color:#dce5f2;margin:0;font-size:14px}
-main{padding:32px 0 60px}.toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap}
-#search{font:inherit;padding:11px 14px;border:1px solid #dfd2ad;border-radius:12px;background:#fff;min-width:min(100%,280px);flex:1}
-#count{font-size:12px;color:var(--muted)}.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-.item{background:#fff;border:1px solid #e6d7ae;border-radius:18px;padding:18px;box-shadow:0 8px 22px #101d3810}
-.item h2{font-size:18px;color:var(--navy);margin:0 0 5px}.item p{font-size:13px;color:var(--muted);margin:0 0 12px}.item .welcome-note{font-size:12px;color:#80652e;margin:8px 0 4px}
-audio{width:100%;height:42px}.empty,.status{background:#fff8e8;border:1px solid #e7d39b;border-radius:14px;padding:18px;text-align:center;color:#765d2a;font-size:13px;grid-column:1/-1}
-footer{text-align:center;color:#8290a3;font-size:11px;padding:20px}
-@media(max-width:620px){.list{grid-template-columns:1fr}.toolbar{align-items:stretch;flex-direction:column}#search{width:100%}}
+:root{--night:#09152c;--navy:#101f3e;--blue:#172e55;--gold:#c9a45b;--gold2:#f2dda2;--cream:#f6f1e7;--ink:#15213a;--muted:#758198}
+*{box-sizing:border-box}
+body{margin:0;color:#f8f5ee;font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.9;background:radial-gradient(ellipse at 12% 8%,#203b65 0,transparent 32%),radial-gradient(ellipse at 92% 38%,#1a3155 0,transparent 28%),linear-gradient(145deg,#081329,#101f3e 52%,#09152c);min-height:100vh;position:relative;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;pointer-events:none;z-index:0;width:70vw;height:1px;background:linear-gradient(90deg,transparent,#d8b66d99,#f6e5b3,transparent);transform:rotate(-24deg);filter:drop-shadow(0 0 7px #d8b66d88)}
+body:before{top:22%;right:-18%}body:after{bottom:17%;left:-20%;transform:rotate(21deg)}
+.wrap{width:min(1080px,calc(100% - 32px));margin:auto;position:relative;z-index:1}
+header{padding:25px 0 22px;border-bottom:1px solid #d5b66b55;background:linear-gradient(110deg,#081329dd,#15294bdd)}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.back{color:var(--gold2);text-decoration:none;font-size:13px}.eyebrow{font-size:11px;letter-spacing:1px;color:var(--gold2)}
+h1{font-size:clamp(26px,4vw,40px);margin:14px 0 2px;font-weight:800;letter-spacing:-.6px}.intro{color:#d0d9e8;margin:0;font-size:14px}
+main{padding:28px 0 64px}
+.player-panel{position:relative;overflow:hidden;border:1px solid #e0c47b99;border-radius:26px;padding:24px clamp(18px,4vw,38px);background:linear-gradient(125deg,#172e51f5,#0b1831f7 65%,#1b3153f5);box-shadow:0 22px 65px #02091688,inset 0 1px #fff2;margin-bottom:28px}
+.player-panel:before{content:"";position:absolute;inset:-70% -20%;background:repeating-linear-gradient(118deg,transparent 0 90px,#d8b66d0b 91px,#d8b66d0b 93px,transparent 94px 180px);transform:rotate(-7deg);pointer-events:none}
+.player-content{position:relative;z-index:1;display:grid;grid-template-columns:74px 1fr;gap:18px;align-items:center}
+.disc{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;border:1px solid #f1d99b;background:radial-gradient(circle,#f1d99b 0 7%,#9c793b 8% 12%,#142849 13% 48%,#c6a45e 49% 52%,#0a1830 53%);box-shadow:0 0 25px #d7b76b33;color:#fff}
+.disc span{font-size:25px;text-shadow:0 2px 6px #000}
+.player-label{color:var(--gold2);font-size:11px;margin:0}.player-title{font-size:20px;font-weight:700;margin:2px 0 8px;color:#fff}
+audio{width:100%;height:42px;filter:sepia(.16) saturate(.8)}
+.player-hint{font-size:11px;color:#c5cfdf;margin:10px 0 0}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+#search{font:inherit;color:#fff;background:#ffffff0b;border:1px solid #c9a45b77;border-radius:13px;padding:11px 15px;min-width:min(100%,290px);flex:1;outline:none}
+#search::placeholder{color:#aab5c8}#search:focus{border-color:var(--gold2);box-shadow:0 0 0 3px #d8b66d22}
+#count{font-size:12px;color:#d4dbea}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.item{position:relative;display:flex;align-items:center;gap:14px;min-height:104px;padding:17px 18px;border:1px solid #c9a45b55;border-radius:19px;background:linear-gradient(130deg,#ffffff12,#ffffff06);box-shadow:0 9px 26px #02091633;transition:transform .2s,border-color .2s,background .2s}
+.item:hover{transform:translateY(-3px);border-color:#e4c77e;background:linear-gradient(130deg,#ffffff1c,#ffffff09)}
+.number{width:43px;height:43px;flex:0 0 43px;border-radius:14px;display:grid;place-items:center;color:#f4dfa8;font-weight:800;border:1px solid #d2b36c88;background:linear-gradient(145deg,#d0ad6650,#172d4d)}
+.item-info{flex:1;min-width:0}.item h2{font-size:16px;margin:0;color:#fff;font-weight:700}.item p{font-size:11px;color:#b9c5d8;margin:3px 0 0}
+.play-btn{border:1px solid #f0d99d;background:linear-gradient(135deg,#f0d99d,#bd9449);color:#18233a;border-radius:13px;padding:9px 14px;font:700 12px Vazirmatn;white-space:nowrap;cursor:pointer;box-shadow:0 5px 15px #0003}
+.play-btn:hover{filter:brightness(1.07)}.play-btn:focus-visible{outline:2px solid white;outline-offset:3px}
+.empty,.status{grid-column:1/-1;text-align:center;padding:22px;border:1px solid #c9a45b66;border-radius:16px;background:#ffffff0b;color:#e5d6b3;font-size:13px}
+footer{text-align:center;color:#9eabc0;font-size:11px;padding:22px;border-top:1px solid #d5b66b33}
+@media(max-width:650px){.list{grid-template-columns:1fr}.player-content{grid-template-columns:54px 1fr;gap:12px}.disc{width:54px;height:54px}.player-title{font-size:17px}.item{padding:14px}.play-btn{padding:8px 11px}}
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="back" href="/">← بازگشت به افکار معجزه‌گر</a><h1>فایل‌های صوتی رایگان</h1><p class="intro">آموزش‌های صوتی برای رشد فردی و پرورش افکار؛ به‌زودی فایل‌های تازه نیز اضافه می‌شوند.</p></div></header>
-<main class="wrap"><div class="toolbar"><input id="search" type="search" placeholder="جست‌وجو در فایل‌های صوتی…" aria-label="جست‌وجو"><span id="count">در حال دریافت فهرست…</span></div><section id="list" class="list"><div class="status">در حال بارگذاری فایل‌ها…</div></section></main>
+<header><div class="wrap"><div class="topline"><a class="back" href="/">← بازگشت به افکار معجزه‌گر</a><span class="eyebrow">AFKAR-E MOJEZEGAR · AUDIO LIBRARY</span></div><h1>کتابخانه صوتی رایگان</h1><p class="intro">آرامش، آگاهی و رشد؛ هر روز یک قدم نزدیک‌تر به بهترین نسخه خودت.</p></div></header>
+<main class="wrap">
+<section class="player-panel" aria-label="پخش‌کننده صوتی">
+ <div class="player-content"><div class="disc"><span>♫</span></div><div><p class="player-label">پخش‌کننده اختصاصی افکار معجزه‌گر</p><div id="player-title" class="player-title">برای شروع، یکی از آموزش‌ها را انتخاب کن</div><audio id="main-player" controls controlslist="nodownload" preload="none">مرورگر شما از پخش صوت پشتیبانی نمی‌کند.</audio><p id="player-hint" class="player-hint">ابتدا پیام خوشامدگویی پخش می‌شود و سپس آموزش انتخاب‌شده آغاز خواهد شد.</p></div></div>
+</section>
+<div class="toolbar"><input id="search" type="search" placeholder="جست‌وجو در آموزش‌ها…" aria-label="جست‌وجو در آموزش‌ها"><span id="count">در حال دریافت فهرست…</span></div>
+<section id="list" class="list"><div class="status">در حال بارگذاری کتابخانه صوتی…</div></section>
+</main>
 <footer>افکار معجزه‌گر · کتابخانه رایگان رشد و الهام</footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0"></script>
 <script>
 (function(){
  const SUPABASE_URL="https://hrkumriixxhzklbhebbs.supabase.co";
  const SUPABASE_KEY="sb_publishable_KeX22HmbAs8L75bCopZvQQ_X_jVpSVI";
+ const WELCOME_URL="https://share.deepstorage.dev/b237ae0e7d86973e974a074df1c2c481/bd7c0a24-3462-4c10-9466-11cc33701011.mp3";
  const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
- const list=document.getElementById('list'), search=document.getElementById('search'), count=document.getElementById('count');
- let rows=[];
+ const list=document.getElementById('list'),search=document.getElementById('search'),count=document.getElementById('count');
+ const player=document.getElementById('main-player'),playerTitle=document.getElementById('player-title'),hint=document.getElementById('player-hint');
+ const welcome=new Audio(WELCOME_URL);let rows=[],activeUrl='',welcomePhase=false,playToken=0;
+ function fileUrl(x){return /^https?:\/\//i.test(x.storage_path)?x.storage_path:client.storage.from('audio-lessons').getPublicUrl(x.storage_path).data.publicUrl;}
+ function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+ async function playLesson(x){
+  const token=++playToken;activeUrl=fileUrl(x);player.pause();welcome.pause();welcome.currentTime=0;player.removeAttribute('src');player.load();
+  playerTitle.textContent=x.title;hint.textContent='در حال پخش پیام خوشامدگویی…';
+  try{welcomePhase=true;await welcome.play();}catch(e){welcomePhase=false;hint.textContent='خوشامدگویی در دسترس نبود؛ آموزش در حال شروع است.';startMain(token);return;}
+  welcome.onended=()=>{if(token!==playToken)return;welcomePhase=false;hint.textContent='اکنون در حال پخش آموزش';startMain(token);};
+ }
+ function startMain(token){if(token!==playToken)return;player.src=activeUrl;player.load();player.play().then(()=>{hint.textContent='در حال پخش: '+playerTitle.textContent;}).catch(()=>{hint.textContent='برای شروع پخش، دکمه پخش را در پلیر بالا لمس کن.';});}
+ player.addEventListener('play',()=>{if(welcomePhase)player.pause();});
+ player.addEventListener('pause',()=>{if(welcomePhase){welcome.pause();welcomePhase=false;playToken++;hint.textContent='پخش متوقف شد.';}});
+ player.addEventListener('ended',()=>{hint.textContent='پخش این آموزش به پایان رسید.';});
  function render(){
   const q=search.value.trim().toLocaleLowerCase('fa');
   const filtered=rows.filter(x=>(x.title+' '+(x.description||'')).toLocaleLowerCase('fa').includes(q));
-  count.textContent=filtered.length+' فایل';
-  if(!filtered.length){list.innerHTML='<div class="empty">هنوز فایل صوتی منتشرشده‌ای در این بخش قرار نگرفته است.</div>';return;}
-  list.innerHTML=filtered.map((x,i)=>{
-   const url=/^https?:\/\//i.test(x.storage_path) ? x.storage_path : client.storage.from('audio-lessons').getPublicUrl(x.storage_path).data.publicUrl;
-   return '<article class="item"><h2>'+escapeHtml(x.title)+'</h2>'+(x.description?'<p>'+escapeHtml(x.description)+'</p>':'')+'<p class="welcome-note">با شروع این آموزش، پیام خوشامدگویی کوتاهی پخش می‌شود.</p><audio class="lesson-audio" controls controlslist="nodownload" preload="none" data-lesson="'+i+'" src="'+url.replace(/"/g,'&quot;')+'">مرورگر شما از پخش صوت پشتیبانی نمی‌کند.</audio></article>';
-  }).join('');
-  const welcomeUrl='https://share.deepstorage.dev/b237ae0e7d86973e974a074df1c2c481/bd7c0a24-3462-4c10-9466-11cc33701011.mp3';
-  const welcomeAudio=new Audio(welcomeUrl);
-  list.querySelectorAll('.lesson-audio').forEach(audio=>{
-   audio.addEventListener('play',async function firstPlay(){
-    if(this.dataset.welcomed==='yes') return;
-    this.pause();
-    this.dataset.welcomed='yes';
-    try {
-     welcomeAudio.currentTime=0;
-     await welcomeAudio.play();
-     welcomeAudio.onended=()=>this.play().catch(()=>{});
-    } catch(e) {
-     this.play().catch(()=>{});
-    }
-   });
-  });
+  count.textContent=filtered.length+' آموزش';
+  if(!filtered.length){list.innerHTML='<div class="empty">موردی با این عنوان پیدا نشد.</div>';return;}
+  list.innerHTML=filtered.map((x,i)=>'<article class="item"><span class="number">'+String(x.sort_order||i+1).padStart(2,'0')+'</span><div class="item-info"><h2>'+escapeHtml(x.title)+'</h2><p>'+(x.description?escapeHtml(x.description):'آموزش صوتی رایگان')+'</p></div><button class="play-btn" type="button" data-index="'+i+'">▶ پخش آموزش</button></article>').join('');
+  list.querySelectorAll('.play-btn').forEach((btn,i)=>btn.addEventListener('click',()=>playLesson(filtered[i])));
  }
- function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
  async function load(){
   const {data,error}=await client.from('audio_lessons').select('title,description,storage_path,sort_order,created_at').eq('is_published',true).order('sort_order',{ascending:true}).order('created_at',{ascending:false});
   if(error){list.innerHTML='<div class="empty">دریافت فایل‌ها با خطا روبه‌رو شد. لطفاً کمی بعد دوباره تلاش کنید.</div>';count.textContent='خطا در دریافت';console.error(error);return;}
